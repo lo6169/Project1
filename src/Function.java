@@ -1,10 +1,5 @@
 public abstract class Function
 {
-    public Function()
-    {
-
-    }
-
     public abstract boolean isConstant(Function f);
 
     @Override

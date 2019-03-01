@@ -1,5 +1,16 @@
+import java.util.ArrayList;
+
 public class Cos extends Function
 {
+    public ArrayList<Function> cos = new ArrayList<>();
+
+    public Cos(Function ... vals)
+    {
+        for (Function val : vals)
+        {
+            cos.add(val);
+        }
+    }
 
     @Override
     public boolean isConstant(Function f) {
@@ -8,7 +19,9 @@ public class Cos extends Function
 
     @Override
     public String toString() {
-        return null;
+        String str = "cos ( ";
+        str += " )";
+        return str;
     }
 
     @Override

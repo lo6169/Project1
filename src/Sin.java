@@ -1,5 +1,16 @@
+import java.util.ArrayList;
+
 public class Sin extends Function
 {
+    public ArrayList<Function> sin = new ArrayList<>();
+
+    public Sin(Function...vals)
+    {
+        for (Function val : vals)
+        {
+            sin.add(val);
+        }
+    }
 
     @Override
     public boolean isConstant(Function f) {
@@ -8,7 +19,9 @@ public class Sin extends Function
 
     @Override
     public String toString() {
-        return null;
+        String str = "sin (";
+        str += " )";
+        return str;
     }
 
     @Override

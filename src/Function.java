@@ -1,23 +1,19 @@
 public abstract class Function
 {
-    public boolean isConstant(Node f)
+    public Function()
     {
-        return false;
+
     }
+
+    public abstract boolean isConstant(Function f);
+
     @Override
     public abstract String toString();
 
-    public double derivative(Function f)
-    {
-        return 0;
-    }
-    public double integral(Function f)
-    {
-        return 0;
-    }
-    public double evaluate(double x)
-    {
-        return 0;
-    }
+    public abstract double derivative(Function f);
+
+    public abstract double integral(Function f);
+
+    public abstract double evaluate(double x, Function f);
 
 }

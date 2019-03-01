@@ -7,8 +7,29 @@ public class Constant extends Function
         this.val = val;
     }
 
+    @Override
+    public boolean isConstant(Function f) {
+        return true;
+    }
+
     public String toString()
     {
-        return Double.toString(val);
+        return Double.toString(this.val);
     }
+
+    @Override
+    public double derivative(Function f) {
+        return 0;
+    }
+
+    @Override
+    public double integral(Function f) {
+        return 0;
+    }
+
+    @Override
+    public double evaluate(double x, Function f) {
+        return this.val;
+    }
+
 }

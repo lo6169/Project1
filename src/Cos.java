@@ -1,20 +1,14 @@
-public class Variable extends Function
+public class Cos extends Function
 {
-    private static final Variable x = new Variable();
-
-    public Variable()
-    {
-
-    }
 
     @Override
     public boolean isConstant(Function f) {
         return false;
     }
 
-    public String toString()
-    {
-        return "X";
+    @Override
+    public String toString() {
+        return null;
     }
 
     @Override
@@ -29,6 +23,6 @@ public class Variable extends Function
 
     @Override
     public double evaluate(double x, Function f) {
-        return x;
+        return 0;
     }
 }

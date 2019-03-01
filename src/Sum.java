@@ -3,18 +3,26 @@ import java.util.ArrayList;
 public class Sum extends Function
 {
     public ArrayList<Function> sums = new ArrayList<>();
-    public boolean constant = true;
 
     public Sum(Function...vals)
     {
         for (Function val : vals)
         {
             sums.add(val);
-            if (val instanceof Variable)
+        }
+    }
+
+    @Override
+    public boolean isConstant(Function f)
+    {
+        for (Function sum : sums)
+        {
+            if (!(sum instanceof Constant))
             {
-                constant = false;
+                return false;
             }
         }
+        return true;
     }
 
     public String toString()
@@ -30,17 +38,24 @@ public class Sum extends Function
         return str;
     }
 
-    public Function addSums()
-    {
-        if (constant)
+    @Override
+    public double derivative(Function f) {
+        return 0;
+    }
+
+    @Override
+    public double integral(Function f) {
+        return 0;
+    }
+
+    @Override
+    public double evaluate(double x, Function f) {
+        double total = 0;
+        for (Function val : sums)
         {
-            for (Function val : sums)
-            {
-              //  total.add(val);
-            }
-            return null;
+            total += evaluate(x, val);
         }
-        return null;
+        return total;
     }
 
 }

@@ -7,7 +7,7 @@ public abstract class Function
     @Override
     public abstract String toString();
 
-    public abstract double derivative(Function f);
+    public abstract Function derivative(Function f);
 
     public abstract double integral(Function f);
 

@@ -29,8 +29,8 @@ public class Cos extends Function
     }
 
     @Override
-    public double derivative(Function f) {
-        return 0;
+    public Function derivative(Function f) {
+        return new Product (new Constant (-1), new Sin(f), derivative(f));
     }
 
     @Override
@@ -40,6 +40,6 @@ public class Cos extends Function
 
     @Override
     public double evaluate(double x) {
-        return 0;
+        return Math.cos(evaluate(x));
     }
 }

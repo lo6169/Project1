@@ -20,8 +20,8 @@ public class Constant extends Function
     }
 
     @Override
-    public double derivative(Function f) {
-        return 0;
+    public Function derivative(Function f) {
+        return new Constant(0);
     }
 
     @Override

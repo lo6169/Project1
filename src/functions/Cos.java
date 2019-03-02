@@ -1,14 +1,18 @@
+package functions;
+
+import functions.Function;
+
 import java.util.ArrayList;
 
-public class Sin extends Function
+public class Cos extends Function
 {
-    public ArrayList<Function> sin = new ArrayList<>();
+    public ArrayList<Function> cos = new ArrayList<>();
 
-    public Sin(Function...vals)
+    public Cos(Function ... vals)
     {
         for (Function val : vals)
         {
-            sin.add(val);
+            cos.add(val);
         }
     }
 
@@ -19,7 +23,7 @@ public class Sin extends Function
 
     @Override
     public String toString() {
-        String str = "sin (";
+        String str = "cos ( ";
         str += " )";
         return str;
     }
@@ -35,7 +39,7 @@ public class Sin extends Function
     }
 
     @Override
-    public double evaluate(double x, Function f) {
+    public double evaluate(double x) {
         return 0;
     }
 }

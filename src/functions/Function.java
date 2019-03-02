@@ -1,3 +1,5 @@
+package functions;
+
 public abstract class Function
 {
     public abstract boolean isConstant(Function f);
@@ -9,6 +11,6 @@ public abstract class Function
 
     public abstract double integral(Function f);
 
-    public abstract double evaluate(double x, Function f);
+    public abstract double evaluate(double x);
 
 }

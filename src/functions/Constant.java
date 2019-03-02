@@ -1,20 +1,22 @@
-public class Variable extends Function
+package functions;
+
+public class Constant extends Function
 {
-    private static final Variable x = new Variable();
+    double val;
 
-    public Variable()
+    public Constant(double val)
     {
-
+        this.val = val;
     }
 
     @Override
     public boolean isConstant(Function f) {
-        return false;
+        return true;
     }
 
     public String toString()
     {
-        return "X";
+        return Double.toString(this.val);
     }
 
     @Override
@@ -28,7 +30,8 @@ public class Variable extends Function
     }
 
     @Override
-    public double evaluate(double x, Function f) {
-        return x;
+    public double evaluate(double x) {
+        return this.val;
     }
+
 }

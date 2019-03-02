@@ -1,3 +1,5 @@
+package functions;
+
 import java.util.ArrayList;
 
 public class Product extends Function
@@ -42,12 +44,12 @@ public class Product extends Function
     }
 
     @Override
-    public double evaluate(double x, Function f)
+    public double evaluate(double x)
     {
         double total = 1;
         for (Function prod : products)
         {
-            total *= evaluate(x, prod);
+            total *= prod.evaluate(x);
 
         }
         return total;

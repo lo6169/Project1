@@ -1,3 +1,7 @@
+package functions;
+
+import functions.Constant;
+
 import java.util.ArrayList;
 
 public class Sum extends Function
@@ -49,11 +53,11 @@ public class Sum extends Function
     }
 
     @Override
-    public double evaluate(double x, Function f) {
+    public double evaluate(double x) {
         double total = 0;
         for (Function val : sums)
         {
-            total += evaluate(x, val);
+            total += val.evaluate(x);
         }
         return total;
     }

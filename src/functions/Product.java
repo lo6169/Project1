@@ -27,6 +27,7 @@ public class Product extends Function
      */
     @Override
     public boolean isConstant(Function f) {
+        //TODO
         return false;
     }
 
@@ -46,10 +47,18 @@ public class Product extends Function
         {
             str += prod + " * ";
         }
-        int x = products.size();
-        str = str.substring(0, x-3);
-        str += ")";
-        return str;
+        int x = str.length();
+        if (x >= 3)
+        {
+            str = str.substring(0, x-3);
+            str += ")";
+            return str;
+        }
+        else
+        {
+            return "(1.0)";
+        }
+
     }
 
     /**

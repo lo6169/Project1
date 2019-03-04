@@ -1,5 +1,6 @@
 package functions;
 
+
 /**
  * This class, FunctionTest1,
  * is used to test all of the
@@ -57,6 +58,7 @@ public class FunctionTest1
      * and that the mathematical functions are
      * being done correctly.
      */
+    // ISSUE
     public static void TestEvaluate()
     {
         System.out.println("----------Testing Evaluate:----------");
@@ -67,12 +69,25 @@ public class FunctionTest1
         System.out.println(new Sum().evaluate(2));
     }
 
+    /**
+     * Test the isConstant function
+     * to ensure that all variables / functions
+     * with variables will return false.
+     */
+    // ISSUE
+    public static void TestisConstant()
+    {
+        System.out.println("----------Testing Evaluate:----------");
+        System.out.println(new Sum(new Constant(8), new Variable()).isConstant((new Constant(5))));
+    }
+
     public static void main(String[] args)
     {
         TestConstant();
         TestVariable();
         TestSums();
         TestEvaluate();
+        TestisConstant();
 
     }
 }

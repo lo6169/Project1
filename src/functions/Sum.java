@@ -30,14 +30,8 @@ public class Sum extends Function
     @Override
     public boolean isConstant(Function f)
     {
-        for (Function sum : sums)
-        {
-            if (!(sum instanceof Constant))
-            {
-                return false;
-            }
-        }
-        return true;
+        //TODO
+        return false;
     }
 
     /**
@@ -50,7 +44,6 @@ public class Sum extends Function
      */
     public String toString() {
         String str = "(";
-        double total = 0;
         for (Function sum : sums) {
             str += sum + " + ";
         }
@@ -63,7 +56,7 @@ public class Sum extends Function
         }
         else
         {
-            return "0.0";
+            return "(0.0)";
         }
     }
 

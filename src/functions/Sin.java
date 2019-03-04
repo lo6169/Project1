@@ -41,7 +41,11 @@ public class Sin extends Function
     @Override
     public String toString() {
         String str = "sin (";
-        str += " )";
+        for (Function s : sin)
+        {
+            str += s;
+        }
+        str += ")";
         return str;
     }
 
@@ -86,6 +90,7 @@ public class Sin extends Function
      */
     @Override
     public double evaluate(double x) {
-        return Math.sin(evaluate(x));
+        return 0;
+        //return Math.sin(evaluate(x));
     }
 }

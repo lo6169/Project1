@@ -43,7 +43,11 @@ public class Cos extends Function
     @Override
     public String toString() {
         String str = "cos ( ";
-        str += " )";
+        for (Function c : cos)
+        {
+            str += c;
+        }
+        str += ")";
         return str;
     }
 

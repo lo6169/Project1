@@ -43,13 +43,12 @@ public class Variable extends Function
      * given function, f, and return its derivative
      * in the form of another function. The
      * derivative is the measure of a slope.
-     * @param f the given function to have the
-     *          derivative found.
+     * @param
      * @return a new function that is the
      * derivative of the old function.
      */
     @Override
-    public Function derivative(Function f) {
+    public Function derivative() {
         return new Constant(1);
     }
 

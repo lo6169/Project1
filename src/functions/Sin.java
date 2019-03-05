@@ -1,16 +1,16 @@
 package functions;
 
-import java.util.ArrayList;
-
 public class Sin extends Function
 {
-    public ArrayList<Function> sin = new ArrayList<>();
+    public Function[] sin;
 
     public Sin(Function...vals)
     {
+        int index = 0;
         for (Function val : vals)
         {
-            sin.add(val);
+            sin[index] = val;
+            index++;
         }
     }
 
@@ -60,8 +60,8 @@ public class Sin extends Function
      * derivative of the old function.
      */
     @Override
-    public Function derivative(Function f) {
-        return new Product (new Cos(f), derivative(f));
+    public Function derivative() {
+        return new Product (new Cos(), derivative());
     }
 
     /**

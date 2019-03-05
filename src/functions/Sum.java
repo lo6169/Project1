@@ -1,18 +1,16 @@
 package functions;
 
-import functions.Constant;
-
-import java.util.ArrayList;
-
 public class Sum extends Function
 {
-    public ArrayList<Function> sums = new ArrayList<>();
+    public Function[] sums;
 
     public Sum(Function...vals)
     {
+        int index = 0;
         for (Function val : vals)
         {
-            sums.add(val);
+            sums[index] = val;
+            index++;
         }
     }
 
@@ -65,19 +63,18 @@ public class Sum extends Function
      * given function, f, and return its derivative
      * in the form of another function. The
      * derivative is the measure of a slope.
-     * @param f the given function to have the
-     *          derivative found.
+     * @param
      * @return a new function that is the
      * derivative of the old function.
      */
     @Override
-    public Function derivative(Function f)
+    public Function derivative()
     {
-        Function[] fn = new Function[sums.size()];
+        Function[] fn = new Function[sums.length];
         int index = 0;
         for (Function sum : sums)
         {
-            fn[index] = derivative(sum);
+            fn[index] = sum.derivative();
             index++;
         }
         return new Sum(fn);

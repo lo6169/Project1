@@ -1,16 +1,16 @@
 package functions;
 
-import java.util.ArrayList;
-
 public class Product extends Function
 {
-    public ArrayList<Function> products = new ArrayList<>();
+    public Function[] products;
 
     public Product(Function...vals)
     {
+        int index = 0;
         for (Function val : vals)
         {
-            products.add(val);
+            products[index] = val;
+            index++;
         }
     }
 
@@ -66,15 +66,14 @@ public class Product extends Function
      * given function, f, and return its derivative
      * in the form of another function. The
      * derivative is the measure of a slope.
-     * @param f the given function to have the
-     *          derivative found.
+     * @param
      * @return a new function that is the
      * derivative of the old function.
      */
     @Override
-    public Function derivative(Function f)
+    public Function derivative()
     {
-        Function[] fn = new Function[products.size()];
+        Function[] fn = new Function[products.length];
         int index = 0;
         int index2 = 0;
         for (Function prod : products)
@@ -84,13 +83,13 @@ public class Product extends Function
             {
                 if (index != index2)
                 {
-                    fn[index] = new Product (prod, derivative(pro));
+                    fn[index] = new Product(prod, pro.derivative());
                     index2++;
                 }
             }
             index++;
         }
-        return null;
+        return new Sum(fn);
     }
 
     /**

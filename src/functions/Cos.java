@@ -1,18 +1,19 @@
 package functions;
 
-import functions.Function;
-
-import java.util.ArrayList;
-
 public class Cos extends Function
 {
-    public ArrayList<Function> cos = new ArrayList<>();
+    public Function[] cos;
+    int amntvals;
 
     public Cos(Function ... vals)
     {
+        int index = 0;
+        amntvals = 0;
         for (Function val : vals)
         {
-            cos.add(val);
+            cos[index] = val;
+            index++;
+            amntvals++;
         }
     }
 
@@ -56,14 +57,29 @@ public class Cos extends Function
      * given function, f, and return its derivative
      * in the form of another function. The
      * derivative is the measure of a slope.
-     * @param f the given function to have the
-     *          derivative found.
+     * @param
      * @return a new function that is the
      * derivative of the old function.
      */
     @Override
-    public Function derivative(Function f) {
-        return new Product (new Constant (-1), new Sin(f), derivative(f));
+    public Function derivative()
+    {
+        int i = -1;
+        Function[] fn = new Function[amntvals-1];
+        for (Function f : cos)
+        {
+            if (i == -1)
+            {
+                i++;
+            }
+            else
+            {
+                fn[i] = f;
+                i++;
+            }
+
+        }
+        return new Product (new Constant (-1), new Sin(), derivative());
     }
 
     /**

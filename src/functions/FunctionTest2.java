@@ -79,6 +79,7 @@ public class FunctionTest2
         System.out.println(new Product(new Sum(new Constant(5), new Variable()), new Constant(12)).evaluate(5));
         System.out.println(new Product(new Constant(5), new Sin(new Variable())).evaluate(0)); //TODO FIX SIN AND COS
         System.out.println(new Product(new Constant(5), new Sin(new Variable())).evaluate(0)); // TODO FIX SIN AND COS
+        System.out.println("\n");
     }
 
     /**
@@ -87,11 +88,18 @@ public class FunctionTest2
      * every answer, including constants, variables,
      * sums, products, sin, and cos.
      */
-    // ISSUE
+    // ISSUE WITH PRODUCT - GETTING NULL
     public static void TestDerivative()
     {
-        System.out.println(new Constant(5).derivative(new Variable()));
-
+        System.out.println("----------Testing Derivative:----------");
+        System.out.println(new Constant(5).derivative());
+        System.out.println(new Variable().derivative());
+        System.out.println(new Product(new Constant(5), new Variable()).derivative());
+        System.out.println(new Sum(new Constant(5), new Variable()).derivative());
+        System.out.println(new Sum(new Constant(5), new Product(new Variable(), new Variable())).derivative());
+        System.out.println(new Sin(new Variable()).derivative());
+        System.out.println(new Cos(new Variable()).derivative());
+        System.out.println("\n");
     }
 
     /**
@@ -100,7 +108,7 @@ public class FunctionTest2
      * every answer, including constants, variables,
      * sums, products, sin, and cos.
      */
-    // ISSUE
+    // ISSUE - HAVEN'T DONE IT - FIX OTHER THINGS FIRST
     public static void TestIntegral()
     {
 
@@ -149,5 +157,10 @@ public class FunctionTest2
  * 25.0
  * 120.0
  *
+ *
+ *
+ * ----------Testing Derivative:----------
+ * 0.0
+ * 1.0
  *
  */

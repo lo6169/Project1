@@ -49,7 +49,7 @@ public class Constant extends Function
      * derivative of the old function.
      */
     @Override
-    public Function derivative(Function f) {
+    public Function derivative() {
         return new Constant(0);
     }
 

@@ -42,7 +42,7 @@ public abstract class Function
      * @return a new function that is the
      * derivative of the old function.
      */
-    public abstract Function derivative(Function f);
+    public abstract Function derivative();
 
     /**
      * The integral function will take

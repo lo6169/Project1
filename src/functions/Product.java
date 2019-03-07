@@ -1,16 +1,16 @@
 package functions;
 
+import java.util.ArrayList;
+
 public class Product extends Function
 {
-    public Function[] products;
+    public ArrayList<Function> products = new ArrayList<>();
 
     public Product(Function...vals)
     {
-        int index = 0;
         for (Function val : vals)
         {
-            products[index] = val;
-            index++;
+            products.add(val);
         }
     }
 
@@ -26,9 +26,15 @@ public class Product extends Function
      * or not.
      */
     @Override
-    public boolean isConstant(Function f) {
-        //TODO
-        return false;
+    public boolean isConstant() {
+        for (Function s : products)
+        {
+            if (!(s.isConstant()))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -69,43 +75,34 @@ public class Product extends Function
      * @param
      * @return a new function that is the
      * derivative of the old function.
+     *
+     *
+     * val * val2.d + val.d * val2
      */
     @Override
-    public Function derivative()
-    {
-        Function[] fn = new Function[products.length];
+    public Function derivative() {
+        Product[] pn = new Product[products.size()];
+        Function[] fn = new Function[products.size()];
         int index = 0;
-        int index2 = 0;
-        for (Function prod : products)
-        {
+        int index2;
+        for (Function prod : products) {
             index2 = 0;
-            for (Function pro : products)
-            {
-                if (index != index2)
-                {
-                    fn[index] = new Product(prod, pro.derivative());
-                    index2++;
+            for (Function f : products) {
+                if (index != index2) {
+                    fn[index2] = new Product(prod.derivative(), f);
                 }
+                index2++;
             }
+            fn[index] = prod.derivative();
+            pn[index] = new Product(fn);
             index++;
         }
-        return new Sum(fn);
+
+        return new Sum(pn);
     }
 
-    /**
-     * The integral function will take
-     * the given function, f, and return its
-     * integral in the form of a double. The
-     * integral is the area underneath
-     * the curve/function, which we will find
-     * using the trapezoid method.
-     * @param f, x - the function and the
-     *           double value of x we will use
-     *           to evaluate the function.
-     * @return the value of the integral.
-     */
     @Override
-    public double integral(Function f, double x) {
+    public double integral(double b, double a, int trap) {
         return 0;
     }
 

@@ -16,12 +16,12 @@ public class Variable extends Function
      * it holds no variables and the answer
      * will remain the same regardless of the
      * value of x.
-     * @param f - the given function
+     * @param  - the given function
      * @return - if the function is constant
      * or not.
      */
     @Override
-    public boolean isConstant(Function f) {
+    public boolean isConstant() {
         return false;
     }
 
@@ -52,21 +52,11 @@ public class Variable extends Function
         return new Constant(1);
     }
 
-    /**
-     * The integral function will take
-     * the given function, f, and return its
-     * integral in the form of a double. The
-     * integral is the area underneath
-     * the curve/function, which we will find
-     * using the trapezoid method.
-     * @param f, x - the function and the
-     *           double value of x we will use
-     *           to evaluate the function.
-     * @return the value of the integral.
-     */
     @Override
-    public double integral(Function f, double x) {
-        return 0;
+    public double integral(double b, double a, int trap) {
+        double x = new Product(new Constant(0.5), new Variable(), new Variable()).evaluate(a) -
+                new Product(new Constant(0.5), new Variable(), new Variable()).evaluate(b);
+        return x;
     }
 
     /**

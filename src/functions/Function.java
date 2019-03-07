@@ -19,7 +19,7 @@ public abstract class Function
      * @return - if the function is constant
      * or not.
      */
-    public abstract boolean isConstant(Function f);
+    public abstract boolean isConstant();
 
     /**
      * Create a toString override that will end up
@@ -51,12 +51,12 @@ public abstract class Function
      * integral is the area underneath
      * the curve/function, which we will find
      * using the trapezoid method.
-     * @param f, x - the function and the
+     * @param a, x - the function and the
      *           double value of x we will use
      *           to evaluate the function.
      * @return the value of the integral.
      */
-    public abstract double integral(Function f, double x);
+    public abstract double integral(double b, double a, int trap);
 
     /**
      * Evaluate the given function using

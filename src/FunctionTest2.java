@@ -1,8 +1,7 @@
-package functions;
-
+import functions.*;
 
 /**
- * This class, functions.FunctionTest2,
+ * This class, FunctionTest2,
  * is used to test all of the
  * functions within the Function
  * heirarchy for the first part,
@@ -39,7 +38,6 @@ public class FunctionTest2
     {
         System.out.println("----------Testing Sin:----------");
         System.out.println(new Sin(new Constant(12)));
-        System.out.println(new Sin());
         System.out.println(new Sin (new Sum(new Constant(5), new Variable())));
         System.out.println(new Sin(new Sin(new Sin(new Variable()))));
         System.out.println(new Sin(new Product(new Sin(new Variable()), new Variable())));
@@ -56,7 +54,6 @@ public class FunctionTest2
     {
         System.out.println("----------Testing Cos:----------");
         System.out.println(new Cos(new Constant(12)));
-        System.out.println(new Cos());
         System.out.println(new Cos(new Sum(new Constant(5), new Variable())));
         System.out.println(new Cos(new Cos(new Cos(new Variable()))));
         System.out.println(new Cos(new Sin(new Variable())));
@@ -77,8 +74,8 @@ public class FunctionTest2
         System.out.println((new Product(new Constant(5), new Constant(5))).evaluate(5));
         System.out.println(new Product(new Constant(5), new Variable()).evaluate(5));
         System.out.println(new Product(new Sum(new Constant(5), new Variable()), new Constant(12)).evaluate(5));
-        System.out.println(new Product(new Constant(5), new Sin(new Variable())).evaluate(0)); //TODO FIX SIN AND COS
-        System.out.println(new Product(new Constant(5), new Sin(new Variable())).evaluate(0)); // TODO FIX SIN AND COS
+        System.out.println(new Product(new Constant(5), new Sin(new Variable())).evaluate(0));
+        System.out.println(new Product(new Constant(5), new Cos(new Variable())).evaluate(0));
         System.out.println("\n");
     }
 
@@ -88,7 +85,6 @@ public class FunctionTest2
      * every answer, including constants, variables,
      * sums, products, sin, and cos.
      */
-    // ISSUE WITH PRODUCT - GETTING NULL
     public static void TestDerivative()
     {
         System.out.println("----------Testing Derivative:----------");
@@ -108,10 +104,14 @@ public class FunctionTest2
      * every answer, including constants, variables,
      * sums, products, sin, and cos.
      */
-    // ISSUE - HAVEN'T DONE IT - FIX OTHER THINGS FIRST
     public static void TestIntegral()
     {
-
+        System.out.println("----------Testing Integral:----------");
+        System.out.println(new Constant(12).integral(0, 1, 100));
+        System.out.println(new Constant(12).integral(0, 2, 100));
+        System.out.println(new Variable().integral(0, 1, 100));
+        System.out.println(new Sum(new Constant(5), new Constant(5)).integral(0, 1, 100));
+        System.out.println(new Sum(new Constant(5), new Constant(5)).integral(0, 2, 100));
     }
 
 
@@ -138,7 +138,6 @@ public class FunctionTest2
  *
  * ----------Testing Sin:----------
  * sin (12.0)
- * sin ()
  * sin ((5.0 + X))
  * sin (sin (sin (X)))
  * sin ((sin (X) * X))
@@ -146,7 +145,6 @@ public class FunctionTest2
  *
  * ----------Testing Cos:----------
  * cos (12.0)
- * cos ()
  * cos ((5.0 + X))
  * cos (sin (X))
  * cos ( (sin (X) * 8.0))
@@ -156,11 +154,25 @@ public class FunctionTest2
  * 25.0
  * 25.0
  * 120.0
- *
+ * 0.0
+ * 5.0
  *
  *
  * ----------Testing Derivative:----------
  * 0.0
  * 1.0
+ * ((0.0 * (0.0 * X)) + ((1.0 * 5.0) * 1.0))
+ * (0.0 + 1.0)
+ * (0.0 + ((1.0 * (1.0 * X) + ((1.0 * X) + 1.0)))
+ * (cos ( X ) * 1.0)
+ * (-1.0 * cos (X ) * 1.0)
+ *
+ *
+ *----------Testing Integral:----------
+ * 12.0
+ * 24.0
+ * 0.5
+ * 10.0
+ * 20.0
  *
  */

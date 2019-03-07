@@ -2,19 +2,11 @@ package functions;
 
 public class Cos extends Function
 {
-    public Function[] cos;
-    int amntvals;
+    Function val;
 
-    public Cos(Function ... vals)
+    public Cos(Function val)
     {
-        int index = 0;
-        amntvals = 0;
-        for (Function val : vals)
-        {
-            cos[index] = val;
-            index++;
-            amntvals++;
-        }
+        this.val = val;
     }
 
     /**
@@ -29,8 +21,8 @@ public class Cos extends Function
      * or not.
      */
     @Override
-    public boolean isConstant(Function f) {
-        return false;
+    public boolean isConstant() {
+        return val.isConstant();
     }
 
     /**
@@ -44,11 +36,8 @@ public class Cos extends Function
     @Override
     public String toString() {
         String str = "cos ( ";
-        for (Function c : cos)
-        {
-            str += c;
-        }
-        str += ")";
+        str += val;
+        str += " )";
         return str;
     }
 
@@ -64,38 +53,11 @@ public class Cos extends Function
     @Override
     public Function derivative()
     {
-        int i = -1;
-        Function[] fn = new Function[amntvals-1];
-        for (Function f : cos)
-        {
-            if (i == -1)
-            {
-                i++;
-            }
-            else
-            {
-                fn[i] = f;
-                i++;
-            }
-
-        }
-        return new Product (new Constant (-1), new Sin(), derivative());
+        return new Product(new Constant(-1), new Cos(val), val.derivative());
     }
 
-    /**
-     * The integral function will take
-     * the given function, f, and return its
-     * integral in the form of a double. The
-     * integral is the area underneath
-     * the curve/function, which we will find
-     * using the trapezoid method.
-     * @param f, x - the function and the
-     *           double value of x we will use
-     *           to evaluate the function.
-     * @return the value of the integral.
-     */
     @Override
-    public double integral(Function f, double x) {
+    public double integral(double b, double a, int trap) {
         return 0;
     }
 
@@ -108,6 +70,6 @@ public class Cos extends Function
      */
     @Override
     public double evaluate(double x) {
-        return Math.cos(evaluate(x));
+        return Math.cos(x);
     }
 }

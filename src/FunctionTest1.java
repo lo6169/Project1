@@ -1,5 +1,6 @@
-package functions;
-
+import functions.Constant;
+import functions.Sum;
+import functions.Variable;
 
 /**
  * This class, FunctionTest1,
@@ -77,8 +78,12 @@ public class FunctionTest1
     // ISSUE
     public static void TestisConstant()
     {
-        System.out.println("----------Testing Evaluate:----------");
-        System.out.println(new Sum(new Constant(8), new Variable()).isConstant((new Constant(5))));
+        System.out.println("----------Testing isConstant:----------");
+        System.out.println(new Sum(new Constant(8), new Variable()).isConstant());
+        System.out.println(new Constant(5).isConstant());
+        System.out.println(new Variable().isConstant());
+        System.out.println(new Sum(new Constant(10), new Constant(80), new Constant(100)).isConstant());
+        System.out.println(new Sum(new Variable(), new Variable()).isConstant());
     }
 
     public static void main(String[] args)
@@ -118,4 +123,12 @@ public class FunctionTest1
  * 7.0
  * 5.0
  * 0.0
+ *
+ *
+ * ----------Testing isConstant:----------
+ * false
+ * true
+ * false
+ * true
+ * false
  */

@@ -1,16 +1,16 @@
 package functions;
 
+import java.util.ArrayList;
+
 public class Sum extends Function
 {
-    public Function[] sums;
+    public ArrayList<Function> sums = new ArrayList<>();
 
     public Sum(Function...vals)
     {
-        int index = 0;
         for (Function val : vals)
         {
-            sums[index] = val;
-            index++;
+            sums.add(val);
         }
     }
 
@@ -21,15 +21,21 @@ public class Sum extends Function
      * it holds no variables and the answer
      * will remain the same regardless of the
      * value of x.
-     * @param f - the given function
+     * @param  - the given function
      * @return - if the function is constant
      * or not.
      */
     @Override
-    public boolean isConstant(Function f)
+    public boolean isConstant()
     {
-        //TODO
-        return false;
+        for (Function s : sums)
+        {
+            if (!(s.isConstant()))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -70,7 +76,7 @@ public class Sum extends Function
     @Override
     public Function derivative()
     {
-        Function[] fn = new Function[sums.length];
+        Function[] fn = new Function[sums.size()];
         int index = 0;
         for (Function sum : sums)
         {
@@ -80,21 +86,16 @@ public class Sum extends Function
         return new Sum(fn);
     }
 
-    /**
-     * The integral function will take
-     * the given function, f, and return its
-     * integral in the form of a double. The
-     * integral is the area underneath
-     * the curve/function, which we will find
-     * using the trapezoid method.
-     * @param f, x - the function and the
-     *           double value of x we will use
-     *           to evaluate the function.
-     * @return the value of the integral.
-     */
     @Override
-    public double integral(Function f, double x) {
-        return 0;
+    public double integral(double b, double a, int trap)
+    {
+        double total = 0;
+        for (Function sum : sums)
+        {
+            total += sum.integral(b, a, 0);
+        }
+
+        return total;
     }
 
     /**

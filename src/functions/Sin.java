@@ -2,16 +2,10 @@ package functions;
 
 public class Sin extends Function
 {
-    public Function[] sin;
-
-    public Sin(Function...vals)
+    Function val;
+    public Sin(Function val)
     {
-        int index = 0;
-        for (Function val : vals)
-        {
-            sin[index] = val;
-            index++;
-        }
+        this.val = val;
     }
 
     /**
@@ -26,8 +20,8 @@ public class Sin extends Function
      * or not.
      */
     @Override
-    public boolean isConstant(Function f) {
-        return false;
+    public boolean isConstant() {
+        return val.isConstant();
     }
 
     /**
@@ -41,11 +35,8 @@ public class Sin extends Function
     @Override
     public String toString() {
         String str = "sin (";
-        for (Function s : sin)
-        {
-            str += s;
-        }
-        str += ")";
+        str += val;
+        str += " )";
         return str;
     }
 
@@ -54,32 +45,20 @@ public class Sin extends Function
      * given function, f, and return its derivative
      * in the form of another function. The
      * derivative is the measure of a slope.
-     * @param f the given function to have the
-     *          derivative found.
+     * @param
      * @return a new function that is the
      * derivative of the old function.
      */
     @Override
     public Function derivative() {
-        return new Product (new Cos(), derivative());
+            return new Product(new Cos(val), val.derivative());
     }
 
-    /**
-     * The integral function will take
-     * the given function, f, and return its
-     * integral in the form of a double. The
-     * integral is the area underneath
-     * the curve/function, which we will find
-     * using the trapezoid method.
-     * @param f, x - the function and the
-     *           double value of x we will use
-     *           to evaluate the function.
-     * @return the value of the integral.
-     */
     @Override
-    public double integral(Function f, double x) {
+    public double integral(double b, double a, int trap) {
         return 0;
     }
+
 
     /**
      * Evaluate the given function using
@@ -90,7 +69,6 @@ public class Sin extends Function
      */
     @Override
     public double evaluate(double x) {
-        return 0;
-        //return Math.sin(evaluate(x));
+        return Math.sin(x);
     }
 }

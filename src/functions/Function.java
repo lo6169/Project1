@@ -53,7 +53,19 @@ public abstract class Function
      *          trap - the number of trapezoids
      * @return the value of the integral.
      */
-    public abstract double integral(double b, double a, int trap);
+    public double integral(double b, double a, int trap)
+    {
+        double height = (a - b) / trap;
+        double total = 0.5 * (evaluate(a) + evaluate(b));
+
+        for (int i = 1; i < trap; i++)
+        {
+            double x = b + height * i;
+            total += evaluate(x);
+        }
+
+        return total * height;
+    }
 
     /**
      * Evaluate the given function using

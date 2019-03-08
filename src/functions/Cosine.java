@@ -57,31 +57,6 @@ public class Cosine extends Function
     }
 
     /**
-     * The integral function will take
-     * the given function, f, and return its
-     * integral in the form of a double. The
-     * integral is the area underneath
-     * the curve/function, which we will find
-     * using the trapezoid method.
-     * @param b - the low value, a -the high value -
-     *          trap - the number of trapezoids
-     * @return the value of the integral.
-     */
-    @Override
-    public double integral(double b, double a, int trap) {
-        double height = (a - b) / trap;
-        double total = 0.5 * (evaluate(a) + evaluate(b));
-
-        for (int i = 1; i < trap; i++)
-        {
-            double x = b + height * i;
-            total += evaluate(x);
-        }
-
-        return total * height;
-    }
-
-    /**
      * Evaluate the given function using
      * the value of x to solve for it. Return
      * a double.

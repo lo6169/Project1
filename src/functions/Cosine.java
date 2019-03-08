@@ -1,10 +1,10 @@
 package functions;
 
-public class Cos extends Function
+public class Cosine extends Function
 {
     Function val;
 
-    public Cos(Function val)
+    public Cosine(Function val)
     {
         this.val = val;
     }
@@ -16,7 +16,7 @@ public class Cos extends Function
      * it holds no variables and the answer
      * will remain the same regardless of the
      * value of x.
-     * @param f - the given function
+     * @param - the  given function
      * @return - if the function is constant
      * or not.
      */
@@ -53,10 +53,20 @@ public class Cos extends Function
     @Override
     public Function derivative()
     {
-        return new Product(new Constant(-1), new Cos(val), val.derivative());
+        return new Product(new Constant(-1), new Cosine(val), val.derivative());
     }
 
-    // Low is b, high is a
+    /**
+     * The integral function will take
+     * the given function, f, and return its
+     * integral in the form of a double. The
+     * integral is the area underneath
+     * the curve/function, which we will find
+     * using the trapezoid method.
+     * @param b - the low value, a -the high value -
+     *          trap - the number of trapezoids
+     * @return the value of the integral.
+     */
     @Override
     public double integral(double b, double a, int trap) {
         double height = (a - b) / trap;

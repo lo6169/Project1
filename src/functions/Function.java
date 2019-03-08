@@ -15,7 +15,7 @@ public abstract class Function
      * it holds no variables and the answer
      * will remain the same regardless of the
      * value of x.
-     * @param f - the given function
+     * @param - the given function
      * @return - if the function is constant
      * or not.
      */
@@ -37,8 +37,6 @@ public abstract class Function
      * given function, f, and return its derivative
      * in the form of another function. The
      * derivative is the measure of a slope.
-     * @param f the given function to have the
-     *          derivative found.
      * @return a new function that is the
      * derivative of the old function.
      */
@@ -51,9 +49,8 @@ public abstract class Function
      * integral is the area underneath
      * the curve/function, which we will find
      * using the trapezoid method.
-     * @param a, x - the function and the
-     *           double value of x we will use
-     *           to evaluate the function.
+     * @param b - the low value, a -the high value -
+     *          trap - the number of trapezoids
      * @return the value of the integral.
      */
     public abstract double integral(double b, double a, int trap);

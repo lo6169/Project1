@@ -4,14 +4,29 @@ import java.util.ArrayList;
 
 public class Sum extends Function
 {
+    public ArrayList<Function> sum = new ArrayList<>();
     public ArrayList<Function> sums = new ArrayList<>();
 
     public Sum(Function...vals)
     {
         for (Function val : vals)
         {
-            sums.add(val);
+            sum.add(val);
         }
+
+        double total = 0;
+        for (Function s : sum)
+        {
+            if (s.isConstant())
+            {
+                total += s.evaluate(4);
+            }
+            else
+            {
+                sums.add(s);
+            }
+        }
+        sums.add(new Constant(total));
     }
 
     /**
@@ -86,6 +101,17 @@ public class Sum extends Function
         return new Sum(fn);
     }
 
+    /**
+     * The integral function will take
+     * the given function, f, and return its
+     * integral in the form of a double. The
+     * integral is the area underneath
+     * the curve/function, which we will find
+     * using the trapezoid method.
+     * @param b - the low value, a -the high value -
+     *          trap - the number of trapezoids
+     * @return the value of the integral.
+     */
     @Override
     public double integral(double b, double a, int trap)
     {

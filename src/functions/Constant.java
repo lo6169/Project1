@@ -52,6 +52,17 @@ public class Constant extends Function
         return new Constant(0);
     }
 
+    /**
+     * The integral function will take
+     * the given function, f, and return its
+     * integral in the form of a double. The
+     * integral is the area underneath
+     * the curve/function, which we will find
+     * using the trapezoid method.
+     * @param b - the low value, a -the high value -
+     *          trap - the number of trapezoids
+     * @return the value of the integral.
+     */
     @Override
     public double integral(double b, double a, int trap) {
         double x = new Product(new Constant(val), new Variable()).evaluate(a) -

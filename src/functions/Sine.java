@@ -1,9 +1,9 @@
 package functions;
 
-public class Sin extends Function
+public class Sine extends Function
 {
     Function val;
-    public Sin(Function val)
+    public Sine(Function val)
     {
         this.val = val;
     }
@@ -51,10 +51,20 @@ public class Sin extends Function
      */
     @Override
     public Function derivative() {
-            return new Product(new Cos(val), val.derivative());
+            return new Product(new Cosine(val), val.derivative());
     }
 
-    // Low is b, high is a
+    /**
+     * The integral function will take
+     * the given function, f, and return its
+     * integral in the form of a double. The
+     * integral is the area underneath
+     * the curve/function, which we will find
+     * using the trapezoid method.
+     * @param b - the low value, a -the high value -
+     *          trap - the number of trapezoids
+     * @return the value of the integral.
+     */
     @Override
     public double integral(double b, double a, int trap) {
         double height = (a - b) / trap;

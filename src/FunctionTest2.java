@@ -36,11 +36,11 @@ public class FunctionTest2
      */
     public static void TestSin()
     {
-        System.out.println("----------Testing Sin:----------");
-        System.out.println(new Sin(new Constant(12)));
-        System.out.println(new Sin (new Sum(new Constant(5), new Variable())));
-        System.out.println(new Sin(new Sin(new Sin(new Variable()))));
-        System.out.println(new Sin(new Product(new Sin(new Variable()), new Variable())));
+        System.out.println("----------Testing Sine:----------");
+        System.out.println(new Sine(new Constant(12)));
+        System.out.println(new Sine(new Sum(new Constant(5), new Variable())));
+        System.out.println(new Sine(new Sine(new Sine(new Variable()))));
+        System.out.println(new Sine(new Product(new Sine(new Variable()), new Variable())));
         System.out.println("\n");
     }
 
@@ -52,12 +52,12 @@ public class FunctionTest2
      */
     public static void TestCos()
     {
-        System.out.println("----------Testing Cos:----------");
-        System.out.println(new Cos(new Constant(12)));
-        System.out.println(new Cos(new Sum(new Constant(5), new Variable())));
-        System.out.println(new Cos(new Cos(new Cos(new Variable()))));
-        System.out.println(new Cos(new Sin(new Variable())));
-        System.out.println(new Cos(new Product (new Sin(new Variable()), new Constant(8))));
+        System.out.println("----------Testing Cosine:----------");
+        System.out.println(new Cosine(new Constant(12)));
+        System.out.println(new Cosine(new Sum(new Constant(5), new Variable())));
+        System.out.println(new Cosine(new Cosine(new Cosine(new Variable()))));
+        System.out.println(new Cosine(new Sine(new Variable())));
+        System.out.println(new Cosine(new Product (new Sine(new Variable()), new Constant(8))));
         System.out.println("\n");
     }
 
@@ -74,8 +74,8 @@ public class FunctionTest2
         System.out.println((new Product(new Constant(5), new Constant(5))).evaluate(5));
         System.out.println(new Product(new Constant(5), new Variable()).evaluate(5));
         System.out.println(new Product(new Sum(new Constant(5), new Variable()), new Constant(12)).evaluate(5));
-        System.out.println(new Product(new Constant(5), new Sin(new Variable())).evaluate(0));
-        System.out.println(new Product(new Constant(5), new Cos(new Variable())).evaluate(0));
+        System.out.println(new Product(new Constant(5), new Sine(new Variable())).evaluate(0));
+        System.out.println(new Product(new Constant(5), new Cosine(new Variable())).evaluate(0));
         System.out.println("\n");
     }
 
@@ -93,8 +93,8 @@ public class FunctionTest2
         System.out.println(new Product(new Constant(5), new Variable()).derivative());
         System.out.println(new Sum(new Constant(5), new Variable()).derivative());
         System.out.println(new Sum(new Constant(5), new Product(new Variable(), new Variable())).derivative());
-        System.out.println(new Sin(new Variable()).derivative());
-        System.out.println(new Cos(new Variable()).derivative());
+        System.out.println(new Sine(new Variable()).derivative());
+        System.out.println(new Cosine(new Variable()).derivative());
         System.out.println("\n");
     }
 
@@ -114,9 +114,10 @@ public class FunctionTest2
         System.out.println(new Sum(new Constant(5), new Constant(5)).integral(0, 2, 100));
 
         System.out.println(new Product(new Constant(10), new Variable()).integral(0,1,100));
-        System.out.println(new Sin(new Variable()).integral(0,3.1415,100));
-        System.out.println(new Cos(new Variable()).integral(0,3.1415, 100));
-        System.out.println(new Sin(new Product(new Variable(), new Constant(2))).integral(0,1,100));
+        System.out.println(new Sine(new Variable()).integral(0,3.1415,100));
+        System.out.println(new Cosine(new Variable()).integral(0,3.1415, 100));
+        System.out.println(new Sine(new Product(new Variable(), new Constant(2))).integral(0,3.1415,100));
+        System.out.println(new Cosine(new Product(new Variable(), new Constant(2))).integral(0,3.1415,100));
     }
 
 
@@ -141,14 +142,14 @@ public class FunctionTest2
  * ((8.25 + X + -9.25) * X * 7.0)
  *
  *
- * ----------Testing Sin:----------
+ * ----------Testing Sine:----------
  * sin (12.0)
  * sin ((5.0 + X))
  * sin (sin (sin (X)))
  * sin ((sin (X) * X))
  *
  *
- * ----------Testing Cos:----------
+ * ----------Testing Cosine:----------
  * cos (12.0)
  * cos ((5.0 + X))
  * cos (sin (X))
@@ -182,6 +183,8 @@ public class FunctionTest2
  * 5.0
  * 2.0
  * 0.0
- * 0.5
+ * 2.0
+ * 0.0
+ *
  *
  */

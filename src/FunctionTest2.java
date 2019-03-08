@@ -112,6 +112,11 @@ public class FunctionTest2
         System.out.println(new Variable().integral(0, 1, 100));
         System.out.println(new Sum(new Constant(5), new Constant(5)).integral(0, 1, 100));
         System.out.println(new Sum(new Constant(5), new Constant(5)).integral(0, 2, 100));
+
+        System.out.println(new Product(new Constant(10), new Variable()).integral(0,1,100));
+        System.out.println(new Sin(new Variable()).integral(0,3.1415,100));
+        System.out.println(new Cos(new Variable()).integral(0,3.1415, 100));
+        System.out.println(new Sin(new Product(new Variable(), new Constant(2))).integral(0,1,100));
     }
 
 
@@ -174,5 +179,9 @@ public class FunctionTest2
  * 0.5
  * 10.0
  * 20.0
+ * 5.0
+ * 2.0
+ * 0.0
+ * 0.5
  *
  */

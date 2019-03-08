@@ -15,7 +15,7 @@ public class Sin extends Function
      * it holds no variables and the answer
      * will remain the same regardless of the
      * value of x.
-     * @param f - the given function
+     * @param - the given function
      * @return - if the function is constant
      * or not.
      */
@@ -54,9 +54,19 @@ public class Sin extends Function
             return new Product(new Cos(val), val.derivative());
     }
 
+    // Low is b, high is a
     @Override
     public double integral(double b, double a, int trap) {
-        return 0;
+        double height = (a - b) / trap;
+        double total = 0.5 * (evaluate(a) + evaluate(b));
+
+        for (int i = 1; i < trap; i++)
+        {
+            double x = b + height * i;
+            total += evaluate(x);
+        }
+
+        return total * height;
     }
 
 

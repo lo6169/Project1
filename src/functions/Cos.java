@@ -56,9 +56,19 @@ public class Cos extends Function
         return new Product(new Constant(-1), new Cos(val), val.derivative());
     }
 
+    // Low is b, high is a
     @Override
     public double integral(double b, double a, int trap) {
-        return 0;
+        double height = (a - b) / trap;
+        double total = 0.5 * (evaluate(a) + evaluate(b));
+
+        for (int i = 1; i < trap; i++)
+        {
+            double x = b + height * i;
+            total += evaluate(x);
+        }
+
+        return total * height;
     }
 
     /**
